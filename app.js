@@ -19,7 +19,7 @@
      cond.classList.remove("hide")
     info.innerText=data.current.temp_c+"\u00B0C";
     image.src="https:"+data.current.condition.icon;
-    cond.innerText=data.current.condition.text;
+    cond.innerText=data.current.condition.text+" wind speed : "+data.current.wind_kph+"kph";
 
     console.log(data);}
     catch(error){
