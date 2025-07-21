@@ -1,0 +1,40 @@
+ const button=document.querySelector(".check");
+ const inp=document.querySelector("#place");
+ const display=document.querySelector("#temp");
+ const image=document.querySelector("#image");
+ const info=document.querySelector("#temptext");
+ const cond=document.querySelector("#con");
+ 
+ 
+ 
+ async function temperature() {
+    const val=inp.value.trim();
+    const url="https://api.weatherapi.com/v1/current.json?key=328e90c14d824085bda111630252107&q="+val+"&aqi=no";
+   try{ let response=await fetch(url);
+    let data=await response.json();
+    info.style.fontSize="130px";
+    cond.style.fontSize="50px"
+    display.classList.remove("hide");
+     image.classList.remove("hide");
+     cond.classList.remove("hide")
+    info.innerText=data.current.temp_c+"\u00B0C";
+    image.src="https:"+data.current.condition.icon;
+    cond.innerText=data.current.condition.text;
+
+    console.log(data);}
+    catch(error){
+        display.classList.remove("hide");
+         image.classList.add("hide");
+         cond.classList.add("hide");
+        console.log(error);
+        info.style.fontSize="30px";
+        info.innerText="sorry couldnot get the data";
+       
+       
+    }
+      
+
+    
+ }
+ button.addEventListener("click",temperature);
+ 
