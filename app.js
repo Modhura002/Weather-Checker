@@ -14,7 +14,7 @@
     const url="https://api.weatherapi.com/v1/current.json?key=328e90c14d824085bda111630252107&q="+val+"&aqi=no";
    try{ let response=await fetch(url);
     let data=await response.json();
-    info.style.fontSize="100px";
+    info.style.fontSize="80px";
     cond.style.fontSize="50px"
     display.classList.remove("hide");
      image.classList.remove("hide");
@@ -23,7 +23,7 @@
     info.innerText=data.current.temp_c+"\u00B0C";
     image.src="https:"+data.current.condition.icon;
     cond.innerText=data.current.condition.text;
-    wind.innerText=data.current.wind_kph+"kph"+ data.current.wind_dir;
+    wind.innerText="wind speed : "+data.current.wind_kph+"kph"+"wind dir : "+data.current.wind_dir;
 
     console.log(data);}
     catch(error){
