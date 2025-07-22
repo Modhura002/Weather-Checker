@@ -15,6 +15,9 @@
     const url="https://api.weatherapi.com/v1/current.json?key=328e90c14d824085bda111630252107&q="+val+"&aqi=no";
    try{ let response=await fetch(url);
     let data=await response.json();
+    if (data.error) {
+    throw new Error(data.error.message);
+  }
     info.style.fontSize="80px";
     cond.style.fontSize="50px"
     display.classList.remove("hide");
@@ -37,7 +40,7 @@
          cond.classList.add("hide");
          wind.classList.add("hide");
           humid.classList.add("hide");
-          windir.classlist.add("hide");
+          windir.classList.add("hide");
         console.log(error);
         info.style.fontSize="30px";
         info.innerText="sorry couldnot get the data";
