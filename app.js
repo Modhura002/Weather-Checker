@@ -4,6 +4,8 @@
  const image=document.querySelector("#image");
  const info=document.querySelector("#temptext");
  const cond=document.querySelector("#con");
+ const wind=document.querySelector("#wind");
+ const humid=document.querySelector("#humidity");
  
  
  
@@ -16,20 +18,23 @@
     cond.style.fontSize="50px"
     display.classList.remove("hide");
      image.classList.remove("hide");
-     cond.classList.remove("hide")
+     cond.classList.remove("hide");
+     wind.classList.remove("hide");
     info.innerText=data.current.temp_c+"\u00B0C";
     image.src="https:"+data.current.condition.icon;
     cond.innerText=data.current.condition.text;
+    wind.innerText=data.current.wind_kph+"kph"+ data.current.wind_dir;
 
     console.log(data);}
     catch(error){
         display.classList.remove("hide");
          image.classList.add("hide");
          cond.classList.add("hide");
+         wind.classList.add("hide");
         console.log(error);
         info.style.fontSize="30px";
         info.innerText="sorry couldnot get the data";
-       
+        
        
     }
       
